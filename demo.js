@@ -1,18 +1,14 @@
-// script.js
+
 
 window.onload = function() {
-    // Set green background color for the 3rd element in the list
-    var thirdElement = document.getElementById('items').getElementsByTagName('li')[2];
-    thirdElement.style.backgroundColor = 'green';
+  var headerTitle = document.getElementById('header-title');
+  headerTitle.textContent = 'Hello World ' + headerTitle.textContent;
+
+  // Add "Hello World" before "Item 1"
+  var itemsList = document.getElementById('items');
+  var firstItem = itemsList.firstElementChild;
+  var newListItem = document.createElement('li');
+  newListItem.textContent = 'Hello World ' + firstItem.textContent;
+  itemsList.insertBefore(newListItem, firstItem);
   
-    // Make all elements in the list have bold font
-    var listItems = document.getElementById('items').getElementsByTagName('li');
-    for (var i = 0; i < listItems.length; i++) {
-      listItems[i].style.fontWeight = 'bold';
-    }
-    
-  var elementsByTagName = document.getElementById('items').getElementsByTagName('li');
-  var newLiElementByTagName = elementsByTagName[elementsByTagName.length - 1]; // Get the last li element
-  newLiElementByTagName.style.fontSize = '20px'; // Change the font size to 20 pixels
-  };
-  
+}
