@@ -16,13 +16,15 @@ function addItem(e) {
 
   // Get input value
   var newItem = document.getElementById('item').value;
-
+  var newItem1 = document.getElementById('item2').value;
+  var newitem2 = newItem+ " "+ newItem1 ;
+  console.log(newitem2);
   // Create new li element
   var li = document.createElement('li');
   // Add class
   li.className = 'list-group-item';
   // Add text node with input value
-  li.appendChild(document.createTextNode(newItem));
+  li.appendChild(document.createTextNode(newitem2));
 
   // Create delete button element
   var deleteBtn = document.createElement('button');
@@ -54,8 +56,7 @@ function handleButtonClick(e) {
       itemList.removeChild(li);
     }
   } else if (e.target.classList.contains('edit')) {
-    // Handle edit button click (you can add the edit functionality here)
-    // For now, let's log a message to the console
+
     console.log('Edit button clicked');
   }
 }
