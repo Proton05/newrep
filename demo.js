@@ -18,6 +18,8 @@ function addItem(e) {
   var newItem = document.getElementById('item').value;
   var newItem1 = document.getElementById('item2').value;
   var newitem2 = newItem+ " "+ newItem1 ;
+
+  
   //console.log(newitem2);
   // Create new li element
   var li = document.createElement('li');
@@ -26,6 +28,12 @@ function addItem(e) {
   // Add text node with input value
   li.appendChild(document.createTextNode(newitem2));
   localStorage.setItem("item", newitem2);
+
+  let myobj ={
+    firstName: "Jatin",
+    lastName: "Nimade"
+  }
+  localStorage.setItem("fullName", myobj.firstName);
 
   // Create delete button element
   var deleteBtn = document.createElement('button');
