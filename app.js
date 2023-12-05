@@ -2,9 +2,9 @@
 var form = document.getElementById('addForm');
 form.addEventListener('submit', addItem);
 
-function addItem(event) {
+function addItem(e) {
     // Prevent the default form submission
-    event.preventDefault();
+    e.preventDefault();
 
     // Get values from input fields
     var name = document.getElementById('item').value;
@@ -21,7 +21,25 @@ function addItem(event) {
     // Display the submitted details on the screen
     var displayArea = document.getElementById('items');
     var newItem = document.createElement('li');
-    newItem.textContent = 'Submitted details: ' + submittedDetails.name +" "+submittedDetails.email+" "+submittedDetails.phoneNumber;
+    newItem.textContent = 'Submitted details: ' + submittedDetails.name +" "+submittedDetails.email+" "+submittedDetails.phoneNumber
+    displayArea.appendChild(newItem);
+
+    
+    // Create a delete button
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('btn', 'btn-danger', 'ml-2');
+    deleteButton.addEventListener('click', function () {
+        // Remove the list item from the screen
+        displayArea.removeChild(newItem);
+        // Remove the item from local storage
+        localStorage.removeItem('submittedDetails');
+    });
+
+    // Append delete button to the list item
+    newItem.appendChild(deleteButton);
+
+    // Append the list item to the display area
     displayArea.appendChild(newItem);
 
     // Store the submitted details in local storage as JSON
@@ -40,6 +58,23 @@ window.onload = function () {
         var displayArea = document.getElementById('items');
         var newItem = document.createElement('li');
         newItem.textContent = 'Stored Details from Local Storage: ' + storedDetails;
+        
+        // Create a delete button
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('btn', 'btn-danger', 'ml-2');
+        deleteButton.addEventListener('click', function () {
+            // Remove the list item from the screen
+            displayArea.removeChild(newItem);
+            // Remove the item from local storage
+            localStorage.removeItem('submittedDetails');
+        });
+
+        // Append delete button to the list item
+        newItem.appendChild(deleteButton);
+
+        // Append the list item to the display area
         displayArea.appendChild(newItem);
+
     }
 };
